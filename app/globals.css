@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Selection Color */
+::selection {
+  background-color: #F9A822; /* brand-orange */
+  color: #1E1E1E; /* brand-charcoal */
+}
+
+/* Custom Scrollbar for Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c4b5a0 #f5f1eb; /* vintage brown thumb, beige track */
+}
+
+/* Custom Scrollbar for WebKit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f1eb; /* vintage beige */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4b5a0; /* vintage brown */
+  border-radius: 4px;
+  border: 2px solid #f5f1eb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a89682; /* darker vintage brown on hover */
+}
