@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                 <li><a href="#" className="text-base text-gray-700 hover:text-[#F9A822] transition-colors duration-700 ease-in-out font-light">İşlem Rehberi</a></li>
                 <li><a href="#" className="text-base text-gray-700 hover:text-[#F9A822] transition-colors duration-700 ease-in-out font-light">KVK Politikası</a></li>
                 <li><a href="#" className="text-base text-gray-700 hover:text-[#F9A822] transition-colors duration-700 ease-in-out font-light">Çerez Ayarları</a></li>
-                <li><a href="#" className="text-base text-gray-700 hover:text-[#F9A822] transition-colors duration-700 ease-in-out font-light">İletişim</a></li>
+                <li><a href="/contact" className="text-base text-gray-700 hover:text-[#F9A822] transition-colors duration-700 ease-in-out font-light">İletişim</a></li>
               </ul>
             </div>
 

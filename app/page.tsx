@@ -22,41 +22,44 @@ export default function HomePage() {
       <Header onViewProduct={handleViewProduct} />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative h-[75vh] md:h-[90vh] flex items-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2"
-              alt="Hero"
+              src="https://images.unsplash.com/photo-1622260614153-03223fb72052?q=95&w=2400&h=1600&auto=format&fit=crop"
+              alt="Dark Cotton Hero - Premium Handmade Backpacks"
               fill
-              className="object-cover scale-105 transition-transform duration-[8000ms] ease-out hover:scale-100"
+              className="object-cover object-[center_40%] scale-105 transition-transform duration-[8000ms] ease-out hover:scale-100"
               priority
+              quality={95}
+              sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="max-w-2xl">
-              <div className="mb-8">
-                <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-medium tracking-[0.3em] uppercase rounded-full">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center justify-center">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-10 flex justify-center animate-fadeIn">
+                <span className="inline-block px-6 py-2.5 bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-medium tracking-[0.3em] uppercase rounded-full shadow-lg">
                   Yeni Sezon 2025
                 </span>
               </div>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+              <h1 className="font-heading text-6xl md:text-7xl lg:text-9xl font-bold tracking-tight text-white mb-10 leading-[1.05] animate-fadeIn">
                 Zarafet ve<br />Fonksiyonellik
               </h1>
-              <p className="text-base md:text-lg text-white/95 mb-12 max-w-lg leading-relaxed font-light">
+              <p className="text-lg md:text-2xl text-white/95 mb-14 max-w-3xl mx-auto leading-relaxed font-light animate-fadeIn">
                 Premium malzemeler ve modern tasarım anlayışıyla üretilmiş, tarzınızı yansıtan çantalar.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fadeIn">
                 <button
                   onClick={() => router.push('/catalog')}
-                  className="group relative px-10 py-4 bg-white text-black font-semibold text-sm tracking-wider uppercase overflow-hidden transition-all duration-700 ease-in-out hover:text-white"
+                  className="group relative px-12 py-5 bg-white text-black font-semibold text-sm tracking-wider uppercase overflow-hidden transition-all duration-700 ease-in-out hover:text-white shadow-2xl hover:shadow-3xl"
                 >
                   <span className="absolute inset-0 bg-black transform translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out"></span>
                   <span className="relative z-10">Koleksiyonu Keşfet</span>
                 </button>
                 <button
                   onClick={() => router.push('/our-story')}
-                  className="group relative px-10 py-4 bg-transparent text-white font-semibold text-sm tracking-wider uppercase border-2 border-white/80 overflow-hidden transition-all duration-700 ease-in-out hover:border-white"
+                  className="group relative px-12 py-5 bg-transparent text-white font-semibold text-sm tracking-wider uppercase border-2 border-white/80 overflow-hidden transition-all duration-700 ease-in-out hover:border-white shadow-2xl hover:shadow-3xl"
                 >
                   <span className="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out"></span>
                   <span className="relative z-10 group-hover:text-black transition-colors duration-700">Hakkımızda</span>

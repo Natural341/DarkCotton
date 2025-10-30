@@ -75,30 +75,32 @@ const InteractiveProductCard: React.FC<InteractiveProductCardProps> = ({ product
                 </div>
             </div>
 
-            <div className="px-4 py-3 text-center">
-                <h3 className={`font-heading text-sm tracking-wide mb-1.5 transition-colors duration-700 ease-in-out ${
+            <div className="px-4 py-4 text-center">
+                <h3 className={`font-heading text-base md:text-lg tracking-wide mb-2 transition-colors duration-700 ease-in-out ${
                     isHovered ? 'text-brand-orange' : 'text-black'
                 }`}>
                     {product.name}
                 </h3>
-                <p className="font-body text-xs text-black mb-2">
+                <p className="font-heading text-lg md:text-xl font-bold text-black mb-3">
                     {product.price.toFixed(0)} TL
                 </p>
 
-                {/* Color Combinations on Hover - Daha soft ve şık */}
+                {/* Color Combinations on Hover - Çok daha okunabilir */}
                 <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-                    isHovered ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'
+                    isHovered ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
-                    <div className="flex flex-wrap justify-center gap-1 mt-2">
-                        {product.colorCombinations.map((color, index) => (
-                            <span
-                                key={index}
-                                className="text-[10px] px-2 py-0.5 bg-transparent text-black font-light tracking-wide"
-                                style={{ fontFamily: 'serif' }}
-                            >
-                                {color}
-                            </span>
-                        ))}
+                    <div className="border-t border-gray-200 pt-3 mt-2">
+                        <p className="text-xs text-gray-600 font-semibold tracking-wider uppercase mb-2">Mevcut Renkler</p>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {product.colorCombinations.map((color, index) => (
+                                <span
+                                    key={index}
+                                    className="text-xs px-3 py-1.5 bg-gray-100 text-gray-900 font-medium rounded-full border border-gray-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all duration-300"
+                                >
+                                    {color}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
