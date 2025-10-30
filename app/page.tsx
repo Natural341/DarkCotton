@@ -28,7 +28,7 @@ export default function HomePage() {
               src="https://images.unsplash.com/photo-1622260614153-03223fb72052?q=95&w=2400&h=1600&auto=format&fit=crop"
               alt="Dark Cotton Hero - Premium Handmade Backpacks"
               fill
-              className="object-cover object-[center_40%] scale-105 transition-transform duration-[8000ms] ease-out hover:scale-100"
+              className="object-cover object-center scale-125 transition-transform duration-[8000ms] ease-out hover:scale-110"
               priority
               quality={95}
               sizes="100vw"

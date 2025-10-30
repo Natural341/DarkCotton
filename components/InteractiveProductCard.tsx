@@ -81,7 +81,7 @@ const InteractiveProductCard: React.FC<InteractiveProductCardProps> = ({ product
                 }`}>
                     {product.name}
                 </h3>
-                <p className="font-heading text-lg md:text-xl font-bold text-black mb-3">
+                <p className="font-body text-sm md:text-base text-gray-600 mb-3">
                     {product.price.toFixed(0)} TL
                 </p>
 
@@ -94,7 +94,7 @@ const InteractiveProductCard: React.FC<InteractiveProductCardProps> = ({ product
                             {product.colorCombinations.map((color, index) => (
                                 <span
                                     key={index}
-                                    className="text-xs px-3 py-1.5 bg-gray-100 text-gray-900 font-medium rounded-full border border-gray-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all duration-300"
+                                    className="text-[10px] md:text-xs px-2.5 py-1 bg-gray-100 text-gray-700 font-normal rounded-full border border-gray-300 hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all duration-300"
                                 >
                                     {color}
                                 </span>
