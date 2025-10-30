@@ -8,6 +8,7 @@ import { PRODUCTS } from '@/constants';
 import InteractiveProductCard from '@/components/InteractiveProductCard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TurkeyStoreMap from '@/components/TurkeyStoreMap';
 
 export default function HomePage() {
   const router = useRouter();
@@ -207,153 +208,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Satış Noktalarımız */}
-        <section className="py-20 md:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-                Satış Noktalarımız
-              </h2>
-              <p className="text-base md:text-lg text-gray-600 font-light max-w-2xl mx-auto">
-                Ürünlerimizi yakından görmek ve deneyimlemek için mağazalarımızı ziyaret edebilirsiniz
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {/* İstanbul - Nişantaşı */}
-              <div className="group bg-gradient-to-b from-gray-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out border-2 border-gray-100 hover:border-[#F9A822]">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-black group-hover:bg-[#F9A822] rounded-xl flex items-center justify-center transition-all duration-700 ease-in-out flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="font-heading text-xl font-bold text-gray-900 mb-2">İstanbul - Nişantaşı</h3>
-                    <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
-                      Teşvikiye Caddesi No: 123<br />
-                      Şişli, İstanbul 34365
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-3 border-t border-gray-200 pt-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">+90 212 234 56 78</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">10:00 - 20:00</span>
-                  </div>
-                </div>
-                <button className="mt-6 w-full py-3 bg-gray-900 text-white font-semibold text-sm tracking-wide rounded-lg hover:bg-[#F9A822] transition-all duration-700 ease-in-out">
-                  Haritada Göster
-                </button>
-              </div>
-
-              {/* İstanbul - Kadıköy */}
-              <div className="group bg-gradient-to-b from-gray-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out border-2 border-gray-100 hover:border-[#F9A822]">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-black group-hover:bg-[#F9A822] rounded-xl flex items-center justify-center transition-all duration-700 ease-in-out flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="font-heading text-xl font-bold text-gray-900 mb-2">İstanbul - Kadıköy</h3>
-                    <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
-                      Bağdat Caddesi No: 456<br />
-                      Kadıköy, İstanbul 34730
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-3 border-t border-gray-200 pt-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">+90 216 345 67 89</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">10:00 - 20:00</span>
-                  </div>
-                </div>
-                <button className="mt-6 w-full py-3 bg-gray-900 text-white font-semibold text-sm tracking-wide rounded-lg hover:bg-[#F9A822] transition-all duration-700 ease-in-out">
-                  Haritada Göster
-                </button>
-              </div>
-
-              {/* Ankara */}
-              <div className="group bg-gradient-to-b from-gray-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out border-2 border-gray-100 hover:border-[#F9A822]">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-black group-hover:bg-[#F9A822] rounded-xl flex items-center justify-center transition-all duration-700 ease-in-out flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="font-heading text-xl font-bold text-gray-900 mb-2">Ankara - Çankaya</h3>
-                    <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
-                      Tunalı Hilmi Caddesi No: 789<br />
-                      Çankaya, Ankara 06700
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-3 border-t border-gray-200 pt-6">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">+90 312 456 78 90</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-sm text-gray-700 font-light">10:00 - 20:00</span>
-                  </div>
-                </div>
-                <button className="mt-6 w-full py-3 bg-gray-900 text-white font-semibold text-sm tracking-wide rounded-lg hover:bg-[#F9A822] transition-all duration-700 ease-in-out">
-                  Haritada Göster
-                </button>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="text-center mt-12">
-              <p className="text-base text-gray-600 font-light mb-6">
-                Türkiye genelinde 30+ mağazamız var
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => router.push('/stores')}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white font-semibold text-sm tracking-wide uppercase hover:bg-[#F9A822] transition-all duration-700 ease-in-out rounded-lg"
-                >
-                  Tüm Mağazalarımızı Gör
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => router.push('/catalog')}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 border-2 border-gray-300 font-semibold text-sm tracking-wide uppercase hover:border-[#F9A822] hover:text-[#F9A822] transition-all duration-700 ease-in-out rounded-lg"
-                >
-                  Online Alışveriş
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Turkey Store Map */}
+        <TurkeyStoreMap />
       </main>
       <Footer />
     </div>
