@@ -86,58 +86,139 @@ export default function HomePage() {
         <section className="py-20 md:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">Kategoriler</h2>
-              <p className="text-base md:text-lg text-gray-600 font-light">İhtiyacınıza uygun çantayı bulun</p>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">Koleksiyonlarımız</h2>
+              <p className="text-base md:text-lg text-gray-600 font-light">Her tarza uygun çanta çeşitleri</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="relative h-[450px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog')}>
-                <Image
-                  src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Canvas Çantalar"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-700 ease-in-out flex items-end">
-                  <div className="p-8 text-white transform group-hover:translate-y-[-8px] transition-transform duration-700 ease-in-out">
-                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Canvas</h3>
-                    <p className="text-sm text-white/90 mb-4 font-light">Dayanıklı ve şık tasarımlar</p>
-                    <div className="w-12 h-1 bg-white/50 group-hover:w-24 group-hover:bg-white transition-all duration-700 ease-in-out"></div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative h-[450px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog')}>
+
+            {/* Main Categories - 3 Columns */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <div className="relative h-[400px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Sırt Çantası')}>
                 <Image
                   src="https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Deri Çantalar"
+                  alt="Sırt Çantası"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-700 ease-in-out flex items-end">
                   <div className="p-8 text-white transform group-hover:translate-y-[-8px] transition-transform duration-700 ease-in-out">
-                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Leather</h3>
-                    <p className="text-sm text-white/90 mb-4 font-light">Lüks ve zarafet</p>
+                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Sırt Çantası</h3>
+                    <p className="text-sm text-white/90 mb-4 font-light">Klasik ve modern tasarımlar</p>
                     <div className="w-12 h-1 bg-white/50 group-hover:w-24 group-hover:bg-white transition-all duration-700 ease-in-out"></div>
                   </div>
                 </div>
               </div>
-              <div className="relative h-[450px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog')}>
+
+              <div className="relative h-[400px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Omuz Çantası')}>
+                <Image
+                  src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Omuz Çantası"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-700 ease-in-out flex items-end">
+                  <div className="p-8 text-white transform group-hover:translate-y-[-8px] transition-transform duration-700 ease-in-out">
+                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Omuz Çantası</h3>
+                    <p className="text-sm text-white/90 mb-4 font-light">Crossbody ve messenger modeller</p>
+                    <div className="w-12 h-1 bg-white/50 group-hover:w-24 group-hover:bg-white transition-all duration-700 ease-in-out"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative h-[400px] overflow-hidden group cursor-pointer rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Bel Çantası')}>
                 <Image
                   src="https://images.pexels.com/photos/1034921/pexels-photo-1034921.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Cotton Çantalar"
+                  alt="Bel Çantası"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/95 transition-all duration-700 ease-in-out flex items-end">
                   <div className="p-8 text-white transform group-hover:translate-y-[-8px] transition-transform duration-700 ease-in-out">
-                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Cotton</h3>
-                    <p className="text-sm text-white/90 mb-4 font-light">Konforlu ve doğal</p>
+                    <h3 className="font-heading text-3xl font-bold tracking-tight mb-3">Bel Çantası</h3>
+                    <p className="text-sm text-white/90 mb-4 font-light">Pratik ve şık modeller</p>
                     <div className="w-12 h-1 bg-white/50 group-hover:w-24 group-hover:bg-white transition-all duration-700 ease-in-out"></div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Secondary Categories - 4 Columns */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="relative h-[280px] overflow-hidden group cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Tote Bag')}>
+                <Image
+                  src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Tote Bag"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-700 ease-in-out flex items-end">
+                  <div className="p-6 text-white transform group-hover:translate-y-[-6px] transition-transform duration-700 ease-in-out">
+                    <h3 className="font-heading text-xl font-bold tracking-tight mb-2">Tote Bag</h3>
+                    <p className="text-xs text-white/90 font-light">Günlük kullanım</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative h-[280px] overflow-hidden group cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Makyaj Çantası')}>
+                <Image
+                  src="https://images.pexels.com/photos/1034921/pexels-photo-1034921.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Makyaj Çantası"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-700 ease-in-out flex items-end">
+                  <div className="p-6 text-white transform group-hover:translate-y-[-6px] transition-transform duration-700 ease-in-out">
+                    <h3 className="font-heading text-xl font-bold tracking-tight mb-2">Makyaj Çantası</h3>
+                    <p className="text-xs text-white/90 font-light">Kompakt tasarım</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative h-[280px] overflow-hidden group cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Travel')}>
+                <Image
+                  src="https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Travel"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-700 ease-in-out flex items-end">
+                  <div className="p-6 text-white transform group-hover:translate-y-[-6px] transition-transform duration-700 ease-in-out">
+                    <h3 className="font-heading text-xl font-bold tracking-tight mb-2">Travel</h3>
+                    <p className="text-xs text-white/90 font-light">Seyahat için</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative h-[280px] overflow-hidden group cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-all duration-700 ease-in-out" onClick={() => router.push('/catalog?category=Deri Koleksiyon')}>
+                <Image
+                  src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Deri Koleksiyon"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-700 ease-in-out flex items-end">
+                  <div className="p-6 text-white transform group-hover:translate-y-[-6px] transition-transform duration-700 ease-in-out">
+                    <h3 className="font-heading text-xl font-bold tracking-tight mb-2">Deri Koleksiyon</h3>
+                    <p className="text-xs text-white/90 font-light">Premium deri</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* View All Button */}
+            <div className="text-center mt-12">
+              <button
+                onClick={() => router.push('/catalog')}
+                className="px-10 py-4 bg-black text-white font-semibold text-sm tracking-wider uppercase rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Tüm Ürünleri Görüntüle
+              </button>
             </div>
           </div>
         </section>
