@@ -175,7 +175,7 @@ const TurkeyStoreMap: React.FC = () => {
           <button
             onClick={findNearestStore}
             disabled={isLocating}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-orange to-orange-600 text-white font-heading text-sm tracking-wider uppercase rounded-xl hover:shadow-lg hover:shadow-brand-orange/30 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold text-sm tracking-wider uppercase rounded-lg border-2 border-gray-300 hover:border-brand-orange hover:bg-gradient-to-r hover:from-brand-orange hover:to-orange-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed mb-4"
           >
             {isLocating ? (
               <>
@@ -183,15 +183,15 @@ const TurkeyStoreMap: React.FC = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Konum Alınıyor...
+                <span>Konum Alınıyor...</span>
               </>
             ) : (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                Yakınımdaki Mağazayı Bul
+                <span className="group-hover:tracking-widest transition-all duration-300">Yakınımdaki Mağazayı Bul</span>
               </>
             )}
           </button>

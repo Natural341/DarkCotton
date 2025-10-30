@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/app/context/AuthContext';
 import CloseIcon from './icons/CloseIcon';
 import InstagramIcon from './icons/InstagramIcon';
 import FacebookIcon from './icons/FacebookIcon';
@@ -14,10 +15,21 @@ interface MainMenuProps {
 
 const MainMenu: React.FC<MainMenuProps> = ({ isOpen, onClose }) => {
   const router = useRouter();
+  const { user, isAuthenticated, logout } = useAuth();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleNavigate = (path: string) => {
     onClose();
     router.push(path);
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      onClose();
+      router.push(`/catalog?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
   };
 
   const getIcon = (itemName: string) => {
@@ -143,14 +155,83 @@ const MainMenu: React.FC<MainMenuProps> = ({ isOpen, onClose }) => {
       <div className={`fixed left-0 top-0 h-full w-[340px] lg:w-[420px] bg-white shadow-2xl z-[100] transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="h-full flex flex-col">
           {/* Header */}
-          <div className="flex justify-between items-center px-6 py-6 border-b border-gray-200 bg-gradient-to-r from-white to-orange-50/30">
-            <div>
-              <h2 className="font-heading text-xl tracking-wider text-black uppercase">Menu</h2>
-              <p className="text-xs text-gray-500 font-body mt-0.5">Kategorilere göz atın</p>
+          <div className="border-b border-gray-200 bg-gradient-to-r from-white to-orange-50/30">
+            <div className="flex justify-between items-center px-6 py-6">
+              <div>
+                <h2 className="font-heading text-xl tracking-wider text-black uppercase">Menu</h2>
+                <p className="text-xs text-gray-500 font-body mt-0.5">Kategorilere göz atın</p>
+              </div>
+              <button onClick={onClose} className="p-2 rounded-lg text-gray-600 hover:text-brand-orange hover:bg-orange-50 transition-all duration-300">
+                <CloseIcon />
+              </button>
             </div>
-            <button onClick={onClose} className="p-2 rounded-lg text-gray-600 hover:text-brand-orange hover:bg-orange-50 transition-all duration-300">
-              <CloseIcon />
-            </button>
+
+            {/* Search Bar */}
+            <div className="px-6 pb-4">
+              <form onSubmit={handleSearch}>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Ürün ara..."
+                    className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg focus:border-brand-orange focus:ring-0 transition-all duration-300 font-body text-sm bg-white"
+                  />
+                  <button
+                    type="submit"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-brand-orange hover:text-orange-600 transition-colors"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* User Section */}
+            <div className="px-6 pb-4">
+              {isAuthenticated ? (
+                <div className="bg-white rounded-lg border-2 border-gray-200 p-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-orange to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                      {user?.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="flex-grow">
+                      <p className="font-semibold text-gray-900 text-sm">{user?.name}</p>
+                      <p className="text-xs text-gray-500">{user?.email}</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => handleNavigate('/profile')}
+                      className="px-3 py-2 bg-gray-100 hover:bg-brand-orange/10 text-gray-700 hover:text-brand-orange text-xs font-semibold rounded-lg transition-all duration-300"
+                    >
+                      Profilim
+                    </button>
+                    <button
+                      onClick={() => {
+                        logout();
+                        onClose();
+                      }}
+                      className="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 text-xs font-semibold rounded-lg transition-all duration-300"
+                    >
+                      Çıkış Yap
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  onClick={() => handleNavigate('/auth')}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-black to-gray-900 hover:from-brand-orange hover:to-orange-600 text-white font-bold text-sm tracking-wider uppercase rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Üye Ol / Giriş Yap
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Categories */}
