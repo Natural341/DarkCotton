@@ -126,7 +126,7 @@ export default function AuthPage() {
               {isLogin && (
                 <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-3">
                   <p className="text-xs text-blue-800 font-body">
-                    <span className="font-semibold">Demo Hesap:</span> okan10@gmail.com / 123
+                    <span className="font-semibold">Demo Hesap:</span> okan10@gmail.com / Portakal2004!
                   </p>
                 </div>
               )}

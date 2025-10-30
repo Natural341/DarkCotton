@@ -85,12 +85,11 @@ const InteractiveProductCard: React.FC<InteractiveProductCardProps> = ({ product
                     {product.price.toFixed(0)} TL
                 </p>
 
-                {/* Color Combinations on Hover - Çok daha okunabilir */}
+                {/* Color Combinations on Hover - Başlık yok, sadece butonlar */}
                 <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-                    isHovered ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+                    isHovered ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
                     <div className="border-t border-gray-200 pt-3 mt-2">
-                        <p className="text-xs text-gray-600 font-semibold tracking-wider uppercase mb-2">Mevcut Renkler</p>
                         <div className="flex flex-wrap justify-center gap-2">
                             {product.colorCombinations.map((color, index) => (
                                 <span

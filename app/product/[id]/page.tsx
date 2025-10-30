@@ -16,9 +16,17 @@ export default function ProductDetailPage() {
   const { addToCart } = useCart();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [scrollingImageIndex, setScrollingImageIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
   const productId = parseInt(params.id as string);
   const product = PRODUCTS.find(p => p.id === productId);
+
+  // Set initial color when product loads
+  useEffect(() => {
+    if (product && product.colorCombinations.length > 0) {
+      setSelectedColor(product.colorCombinations[0]);
+    }
+  }, [product]);
 
   if (!product) {
     return (
@@ -70,7 +78,7 @@ export default function ProductDetailPage() {
           <div className="absolute inset-0">
             {product.imageUrls.map((url, index) => (
               <div
-                key={url}
+                key={`product-hero-${index}`}
                 className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
                   index === scrollingImageIndex ? 'opacity-100' : 'opacity-0'
                 }`}
@@ -102,25 +110,34 @@ export default function ProductDetailPage() {
                 </p>
               </div>
 
-              {/* Renk Seçenekleri */}
+              {/* Renk Seçenekleri - Başlık yok */}
               <div className="space-y-3">
-                <h3 className="text-sm font-medium text-black">Renk Seçenekleri</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.colorCombinations.map((color, index) => (
                     <button
                       key={index}
-                      className="px-3 py-1.5 text-xs border border-black/20 hover:border-black bg-white/60 backdrop-blur-lg rounded-md transition-all duration-700 ease-in-out"
+                      onClick={() => setSelectedColor(color)}
+                      className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 ${
+                        selectedColor === color
+                          ? 'bg-black text-white border-2 border-black shadow-lg scale-105'
+                          : 'bg-white/60 text-black border-2 border-gray-300 hover:border-black hover:bg-gray-50'
+                      }`}
                     >
                       {color}
                     </button>
                   ))}
                 </div>
+                {selectedColor && (
+                  <p className="text-xs text-gray-600">
+                    Seçili renk: <span className="font-semibold text-black">{selectedColor}</span>
+                  </p>
+                )}
               </div>
 
               {/* Sepete Ekle Button */}
               <button
                 onClick={handleAddToCart}
-                className="w-full py-4 bg-black text-white font-medium text-sm tracking-wide uppercase hover:bg-black/90 transition-all duration-700 ease-in-out"
+                className="w-full py-4 bg-brand-orange text-white font-semibold text-sm tracking-wider uppercase hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl rounded-lg"
               >
                 Sepete Ekle
               </button>

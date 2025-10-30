@@ -26,7 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const savedUsers = localStorage.getItem('users');
     if (!savedUsers) {
       const demoUsers = [
-        { name: 'Okan', email: 'okan10@gmail.com', password: '123' }
+        { name: 'Okan', email: 'okan10@gmail.com', password: 'Portakal2004!' }
       ];
       localStorage.setItem('users', JSON.stringify(demoUsers));
     }
