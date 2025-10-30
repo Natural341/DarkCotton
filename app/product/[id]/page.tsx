@@ -28,6 +28,16 @@ export default function ProductDetailPage() {
     }
   }, [product]);
 
+  // Auto-scroll images effect
+  useEffect(() => {
+    if (!product) return;
+
+    const interval = setInterval(() => {
+      setScrollingImageIndex((prev) => (prev + 1) % product.imageUrls.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [product]);
+
   if (!product) {
     return (
       <div className="flex flex-col min-h-screen">
@@ -47,14 +57,6 @@ export default function ProductDetailPage() {
       </div>
     );
   }
-
-  // Auto-scroll images effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScrollingImageIndex((prev) => (prev + 1) % product.imageUrls.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [product.imageUrls.length]);
 
   const relatedProducts = PRODUCTS
     .filter(p => p.category === product.category && p.id !== product.id)

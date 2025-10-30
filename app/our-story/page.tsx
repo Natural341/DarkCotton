@@ -57,7 +57,7 @@ export default function OurStoryPage() {
                 </h2>
                 <div className="w-16 h-1 bg-black"></div>
                 <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                  Dark Cotton, 2018 yılında İstanbul'da küçük bir atölyede kuruldu. Kurucumuz Ahmet Yılmaz,
+                  Dark Cotton, 2018 yılında İstanbul&apos;da küçük bir atölyede kuruldu. Kurucumuz Ahmet Yılmaz,
                   tekstil endüstrisinde yıllarca çalıştıktan sonra, kendi tarzını ve kalite anlayışını
                   yansıtan bir marka yaratma hayalini gerçekleştirdi.
                 </p>
