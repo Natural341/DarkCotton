@@ -1,21 +1,39 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { Product } from '@/types';
 
 export default function ContactPage() {
+  const router = useRouter();
+
+  const handleViewProduct = (product: Product) => {
+    router.push(`/product/${product.id}`);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50/50">
-      {/* Hero Section */}
-      <div className="bg-black text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            İletişim
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl">
-            Size nasıl yardımcı olabiliriz? Aşağıdaki bölümlerden ihtiyacınız olan bilgiye ulaşabilirsiniz.
-          </p>
-        </div>
-      </div>
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-white to-gray-50/50">
+      <Header onViewProduct={handleViewProduct} />
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative py-20 md:py-28 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,168,34,0.3),transparent_50%)]"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium tracking-[0.2em] uppercase rounded-full mb-6">
+              Bize Ulaşın
+            </div>
+            <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+              İletişim
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto">
+              Size nasıl yardımcı olabiliriz? Aşağıdaki bölümlerden ihtiyacınız olan bilgiye ulaşabilirsiniz.
+            </p>
+          </div>
+        </section>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -111,18 +129,13 @@ export default function ContactPage() {
             </h2>
             <ul className="space-y-3">
               <li>
-                <a href="#musteri-destek" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
-                  → Müşteri Destek
-                </a>
-              </li>
-              <li>
-                <a href="#siparis-takip" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
+                <a href="/order-tracking" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
                   → Sipariş Takip
                 </a>
               </li>
               <li>
-                <a href="#iptal-iade" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
-                  → İptal - İade
+                <a href="/returns" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
+                  → İade ve Değişim
                 </a>
               </li>
               <li>
@@ -136,8 +149,13 @@ export default function ContactPage() {
                 </a>
               </li>
               <li>
-                <a href="#iade-degisim" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
-                  → İade ve Değişim
+                <a href="#musteri-destek" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
+                  → Müşteri Destek
+                </a>
+              </li>
+              <li>
+                <a href="#sss" className="text-base text-gray-700 hover:text-[#F9A822] hover:translate-x-2 inline-block transition-all duration-700 ease-in-out font-light">
+                  → Sıkça Sorulan Sorular
                 </a>
               </li>
             </ul>
@@ -313,6 +331,8 @@ export default function ContactPage() {
           </form>
         </div>
       </div>
+      </main>
+      <Footer />
     </div>
   );
 }
