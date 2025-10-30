@@ -8,7 +8,6 @@ import { PRODUCTS } from '@/constants';
 import InteractiveProductCard from '@/components/InteractiveProductCard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import TurkeyStoreMap from '@/components/TurkeyStoreMap';
 
 export default function HomePage() {
   const router = useRouter();
@@ -208,8 +207,93 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Turkey Store Map */}
-        <TurkeyStoreMap />
+        {/* Store Locations CTA */}
+        <section className="relative py-24 md:py-32 bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(249,168,34,0.3),transparent_50%)]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(249,168,34,0.2),transparent_50%)]"></div>
+          </div>
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Info */}
+              <div className="text-white space-y-8">
+                <div>
+                  <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium tracking-[0.2em] uppercase rounded-full mb-6">
+                    Türkiye Geneli
+                  </span>
+                  <h2 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-6">
+                    32 Mağazamızla<br />Yanınızdayız
+                  </h2>
+                  <p className="text-lg md:text-xl text-white/90 leading-relaxed font-light">
+                    İstanbul&apos;dan İzmir&apos;e, Ankara&apos;dan Antalya&apos;ya. Size en yakın Dark Cotton mağazasını keşfedin ve koleksiyonumuzu yerinde deneyimleyin.
+                  </p>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-6 pt-6">
+                  <div className="border-l-2 border-[#F9A822] pl-4">
+                    <p className="text-4xl font-bold text-white mb-1">32</p>
+                    <p className="text-sm text-white/70 font-light">Mağaza</p>
+                  </div>
+                  <div className="border-l-2 border-[#F9A822] pl-4">
+                    <p className="text-4xl font-bold text-white mb-1">12</p>
+                    <p className="text-sm text-white/70 font-light">Şehir</p>
+                  </div>
+                  <div className="border-l-2 border-[#F9A822] pl-4">
+                    <p className="text-4xl font-bold text-white mb-1">7/24</p>
+                    <p className="text-sm text-white/70 font-light">Destek</p>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <button
+                  onClick={() => router.push('/stores')}
+                  className="group relative px-10 py-5 bg-white text-black font-bold text-sm tracking-wider uppercase overflow-hidden transition-all duration-700 ease-in-out hover:text-white shadow-2xl hover:shadow-3xl rounded-lg"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#F9A822] to-orange-600 transform translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></span>
+                  <span className="relative z-10 flex items-center gap-3">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Mağazalarımızı Keşfet
+                  </span>
+                </button>
+              </div>
+
+              {/* Right Side - Visual */}
+              <div className="relative">
+                <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Dark Cotton Mağaza"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+                  {/* Floating Card */}
+                  <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-xl p-6 rounded-xl shadow-2xl">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-[#F9A822] rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="font-heading text-lg font-bold text-gray-900">En Yakınınızı Bulun</p>
+                        <p className="text-sm text-gray-600 font-light">Konum bazlı akıllı arama</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

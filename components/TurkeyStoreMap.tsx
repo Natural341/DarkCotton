@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface Store {
   id: number;
   city: string;
+  district: string;
   name: string;
   address: string;
   phone: string;
@@ -13,60 +15,61 @@ interface Store {
 }
 
 const stores: Store[] = [
-  {
-    id: 1,
-    city: 'İstanbul',
-    name: 'İstanbul - Nişantaşı',
-    address: 'Teşvikiye Caddesi No: 123, Şişli, İstanbul 34365',
-    phone: '+90 212 234 56 78',
-    lat: 41.0082,
-    lng: 28.9784,
-  },
-  {
-    id: 2,
-    city: 'İstanbul',
-    name: 'İstanbul - Kadıköy',
-    address: 'Bağdat Caddesi No: 456, Kadıköy, İstanbul 34730',
-    phone: '+90 216 345 67 89',
-    lat: 40.9833,
-    lng: 29.0333,
-  },
-  {
-    id: 3,
-    city: 'Ankara',
-    name: 'Ankara - Çankaya',
-    address: 'Tunalı Hilmi Caddesi No: 789, Çankaya, Ankara 06700',
-    phone: '+90 312 456 78 90',
-    lat: 39.9334,
-    lng: 32.8597,
-  },
-  {
-    id: 4,
-    city: 'İzmir',
-    name: 'İzmir - Alsancak',
-    address: 'Kıbrıs Şehitleri Caddesi No: 321, Konak, İzmir 35220',
-    phone: '+90 232 567 89 01',
-    lat: 38.4237,
-    lng: 27.1428,
-  },
-  {
-    id: 5,
-    city: 'Antalya',
-    name: 'Antalya - Kaleiçi',
-    address: 'Atatürk Caddesi No: 654, Muratpaşa, Antalya 07100',
-    phone: '+90 242 678 90 12',
-    lat: 36.8969,
-    lng: 30.7133,
-  },
-  {
-    id: 6,
-    city: 'Bursa',
-    name: 'Bursa - Osmangazi',
-    address: 'Altıparmak Caddesi No: 987, Osmangazi, Bursa 16040',
-    phone: '+90 224 789 01 23',
-    lat: 40.1826,
-    lng: 29.0665,
-  },
+  // İstanbul (8 mağaza)
+  { id: 1, city: 'İstanbul', district: 'Nişantaşı', name: 'Dark Cotton Nişantaşı', address: 'Teşvikiye Caddesi No: 123', phone: '+90 212 234 56 78', lat: 41.0082, lng: 28.9784 },
+  { id: 2, city: 'İstanbul', district: 'Kadıköy', name: 'Dark Cotton Kadıköy', address: 'Bağdat Caddesi No: 456', phone: '+90 216 345 67 89', lat: 40.9833, lng: 29.0333 },
+  { id: 3, city: 'İstanbul', district: 'Beyoğlu', name: 'Dark Cotton İstiklal', address: 'İstiklal Caddesi No: 234', phone: '+90 212 456 78 90', lat: 41.0369, lng: 28.9784 },
+  { id: 4, city: 'İstanbul', district: 'Etiler', name: 'Dark Cotton Etiler', address: 'Nispetiye Caddesi No: 567', phone: '+90 212 567 89 01', lat: 41.0769, lng: 29.0175 },
+  { id: 5, city: 'İstanbul', district: 'Beşiktaş', name: 'Dark Cotton Beşiktaş', address: 'Barbaros Bulvarı No: 89', phone: '+90 212 678 90 12', lat: 41.0422, lng: 29.0069 },
+  { id: 6, city: 'İstanbul', district: 'Bakırköy', name: 'Dark Cotton Bakırköy', address: 'Capacity AVM', phone: '+90 212 789 01 23', lat: 40.9789, lng: 28.8739 },
+  { id: 7, city: 'İstanbul', district: 'Ataşehir', name: 'Dark Cotton Ataşehir', address: 'Watergarden AVM', phone: '+90 216 890 12 34', lat: 40.9833, lng: 29.1244 },
+  { id: 8, city: 'İstanbul', district: 'Maslak', name: 'Dark Cotton Maslak', address: 'Vadi İstanbul AVM', phone: '+90 212 901 23 45', lat: 41.1094, lng: 28.9953 },
+
+  // Ankara (5 mağaza)
+  { id: 9, city: 'Ankara', district: 'Çankaya', name: 'Dark Cotton Çankaya', address: 'Tunalı Hilmi Caddesi No: 789', phone: '+90 312 456 78 90', lat: 39.9334, lng: 32.8597 },
+  { id: 10, city: 'Ankara', district: 'Kızılay', name: 'Dark Cotton Kızılay', address: 'Atatürk Bulvarı No: 123', phone: '+90 312 567 89 01', lat: 39.9199, lng: 32.8543 },
+  { id: 11, city: 'Ankara', district: 'Çayyolu', name: 'Dark Cotton Çayyolu', address: 'Nata Vega AVM', phone: '+90 312 678 90 12', lat: 39.9708, lng: 32.7369 },
+  { id: 12, city: 'Ankara', district: 'Keçiören', name: 'Dark Cotton Keçiören', address: 'ANKAmall AVM', phone: '+90 312 789 01 23', lat: 39.9994, lng: 32.8597 },
+  { id: 13, city: 'Ankara', district: 'Ümitköy', name: 'Dark Cotton Ümitköy', address: 'Armada AVM', phone: '+90 312 890 12 34', lat: 39.9219, lng: 32.7131 },
+
+  // İzmir (4 mağaza)
+  { id: 14, city: 'İzmir', district: 'Alsancak', name: 'Dark Cotton Alsancak', address: 'Kıbrıs Şehitleri Caddesi No: 321', phone: '+90 232 567 89 01', lat: 38.4237, lng: 27.1428 },
+  { id: 15, city: 'İzmir', district: 'Karşıyaka', name: 'Dark Cotton Karşıyaka', address: 'Bostanlı Caddesi No: 654', phone: '+90 232 678 90 12', lat: 38.4602, lng: 27.1267 },
+  { id: 16, city: 'İzmir', district: 'Bornova', name: 'Dark Cotton Bornova', address: 'Park Bornova AVM', phone: '+90 232 789 01 23', lat: 38.4698, lng: 27.2142 },
+  { id: 17, city: 'İzmir', district: 'Gaziemir', name: 'Dark Cotton Gaziemir', address: 'Optimum AVM', phone: '+90 232 890 12 34', lat: 38.3244, lng: 27.1361 },
+
+  // Antalya (3 mağaza)
+  { id: 18, city: 'Antalya', district: 'Kaleiçi', name: 'Dark Cotton Kaleiçi', address: 'Atatürk Caddesi No: 654', phone: '+90 242 678 90 12', lat: 36.8969, lng: 30.7133 },
+  { id: 19, city: 'Antalya', district: 'Lara', name: 'Dark Cotton Lara', address: 'TerraCity AVM', phone: '+90 242 789 01 23', lat: 36.8547, lng: 30.7483 },
+  { id: 20, city: 'Antalya', district: 'Konyaaltı', name: 'Dark Cotton Konyaaltı', address: '5M Migros AVM', phone: '+90 242 890 12 34', lat: 36.8841, lng: 30.6719 },
+
+  // Bursa (2 mağaza)
+  { id: 21, city: 'Bursa', district: 'Osmangazi', name: 'Dark Cotton Osmangazi', address: 'Altıparmak Caddesi No: 987', phone: '+90 224 789 01 23', lat: 40.1826, lng: 29.0665 },
+  { id: 22, city: 'Bursa', district: 'Nilüfer', name: 'Dark Cotton Nilüfer', address: 'Özlüce Caddesi No: 321', phone: '+90 224 890 12 34', lat: 40.1885, lng: 28.8981 },
+
+  // Adana (2 mağaza)
+  { id: 23, city: 'Adana', district: 'Seyhan', name: 'Dark Cotton Seyhan', address: 'İnönü Caddesi No: 456', phone: '+90 322 567 89 01', lat: 36.9910, lng: 35.3308 },
+  { id: 24, city: 'Adana', district: 'Çukurova', name: 'Dark Cotton Optimum', address: 'Optimum AVM', phone: '+90 322 678 90 12', lat: 37.0011, lng: 35.3211 },
+
+  // Konya (2 mağaza)
+  { id: 25, city: 'Konya', district: 'Meram', name: 'Dark Cotton Meram', address: 'Mevlana Caddesi No: 789', phone: '+90 332 456 78 90', lat: 37.8667, lng: 32.4833 },
+  { id: 26, city: 'Konya', district: 'Selçuklu', name: 'Dark Cotton Selçuklu', address: 'Kulesite AVM', phone: '+90 332 567 89 01', lat: 37.9194, lng: 32.5072 },
+
+  // Gaziantep (2 mağaza)
+  { id: 27, city: 'Gaziantep', district: 'Şahinbey', name: 'Dark Cotton Şahinbey', address: 'Suburcu Caddesi No: 234', phone: '+90 342 678 90 12', lat: 37.0662, lng: 37.3833 },
+  { id: 28, city: 'Gaziantep', district: 'Şehitkamil', name: 'Dark Cotton Sanko Park', address: 'Sanko Park AVM', phone: '+90 342 789 01 23', lat: 37.0594, lng: 37.3825 },
+
+  // Eskişehir (1 mağaza)
+  { id: 29, city: 'Eskişehir', district: 'Odunpazarı', name: 'Dark Cotton Eskişehir', address: 'Espark AVM', phone: '+90 222 456 78 90', lat: 39.7667, lng: 30.5256 },
+
+  // Kayseri (1 mağaza)
+  { id: 30, city: 'Kayseri', district: 'Melikgazi', name: 'Dark Cotton Kayseri', address: 'Forum Kayseri AVM', phone: '+90 352 567 89 01', lat: 38.7205, lng: 35.4826 },
+
+  // Mersin (1 mağaza)
+  { id: 31, city: 'Mersin', district: 'Yenişehir', name: 'Dark Cotton Mersin', address: 'Forum Mersin AVM', phone: '+90 324 678 90 12', lat: 36.8000, lng: 34.6333 },
+
+  // Trabzon (1 mağaza)
+  { id: 32, city: 'Trabzon', district: 'Ortahisar', name: 'Dark Cotton Trabzon', address: 'Varlıbaş AVM', phone: '+90 462 789 01 23', lat: 41.0015, lng: 39.7178 },
 ];
 
 const TurkeyStoreMap: React.FC = () => {
@@ -74,18 +77,17 @@ const TurkeyStoreMap: React.FC = () => {
   const [nearestStore, setNearestStore] = useState<Store | null>(null);
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string>('');
+  const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
-  // Calculate distance between two coordinates (Haversine formula)
   const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
-    const R = 6371; // Radius of the earth in km
+    const R = 6371;
     const dLat = deg2rad(lat2 - lat1);
     const dLon = deg2rad(lon2 - lon1);
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c; // Distance in km
-    return d;
+    return R * c;
   };
 
   const deg2rad = (deg: number): number => {
@@ -93,7 +95,6 @@ const TurkeyStoreMap: React.FC = () => {
   };
 
   const findNearestStore = () => {
-    console.log('Finding nearest store...');
     setIsLocating(true);
     setLocationError('');
 
@@ -107,29 +108,24 @@ const TurkeyStoreMap: React.FC = () => {
       (position) => {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
-        console.log('User location:', userLat, userLng);
 
         let nearest = stores[0];
         let minDistance = calculateDistance(userLat, userLng, stores[0].lat, stores[0].lng);
 
         stores.forEach((store) => {
           const distance = calculateDistance(userLat, userLng, store.lat, store.lng);
-          console.log(`Distance to ${store.name}: ${distance.toFixed(2)} km`);
           if (distance < minDistance) {
             minDistance = distance;
             nearest = store;
           }
         });
 
-        console.log('Nearest store:', nearest.name, 'Distance:', minDistance.toFixed(2), 'km');
         setNearestStore(nearest);
-        setSelectedCity(null); // Show all stores but highlight nearest
+        setSelectedCity(null);
         setIsLocating(false);
       },
       (error) => {
-        console.error('Geolocation error:', error);
         let errorMsg = 'Konum alınamadı. ';
-
         switch(error.code) {
           case error.PERMISSION_DENIED:
             errorMsg += 'Lütfen tarayıcınızın konum izinlerini aktif edin.';
@@ -140,35 +136,42 @@ const TurkeyStoreMap: React.FC = () => {
           case error.TIMEOUT:
             errorMsg += 'Konum alma zaman aşımına uğradı.';
             break;
-          default:
-            errorMsg += 'Bilinmeyen bir hata oluştu.';
         }
-
         setLocationError(errorMsg);
         setIsLocating(false);
       },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0
-      }
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
   };
+
+  // Get unique cities with store count
+  const citiesWithCount = Array.from(new Set(stores.map(s => s.city))).map(city => ({
+    name: city,
+    count: stores.filter(s => s.city === city).length
+  }));
 
   const cityStores = selectedCity ? stores.filter((s) => s.city === selectedCity) : stores;
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+        <div className="absolute w-96 h-96 bg-orange-400/5 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
             Satış Noktalarımız
           </h2>
-          <p className="text-base md:text-lg text-gray-600 font-light max-w-2xl mx-auto mb-8">
-            Türkiye genelinde 30+ mağazamız ile hizmetinizdeyiz
+          <p className="text-base md:text-lg text-gray-600 font-light max-w-2xl mx-auto mb-2">
+            Türkiye genelinde <span className="font-bold text-brand-orange">{stores.length} mağazamız</span> ile hizmetinizdeyiz
+          </p>
+          <p className="text-sm text-gray-500 mb-8">
+            {citiesWithCount.length} farklı şehirde premium hizmet
           </p>
 
-          {/* Find Nearest Store Button */}
           <button
             onClick={findNearestStore}
             disabled={isLocating}
@@ -200,247 +203,211 @@ const TurkeyStoreMap: React.FC = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Modern 3D Turkey Map */}
-          <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 border border-gray-200">
-            <h3 className="font-heading text-2xl text-black mb-6 text-center">Türkiye Mağaza Haritası</h3>
+        {/* Turkey Map with Image */}
+        <div className="mb-12">
+          <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-200 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-gray-50/30"></div>
 
-            <svg viewBox="0 0 1000 600" className="w-full h-auto drop-shadow-lg">
-              <defs>
-                {/* Gradient for 3D effect */}
-                <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{stopColor: '#f8fafc', stopOpacity: 1}} />
-                  <stop offset="100%" style={{stopColor: '#e2e8f0', stopOpacity: 1}} />
-                </linearGradient>
+            <div className="relative">
+              <h3 className="font-heading text-2xl text-black mb-6 text-center">Türkiye Geneli Mağaza Dağılımı</h3>
 
-                {/* Shadow filter */}
-                <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-                  <feOffset dx="2" dy="4" result="offsetblur"/>
-                  <feComponentTransfer>
-                    <feFuncA type="linear" slope="0.3"/>
-                  </feComponentTransfer>
-                  <feMerge>
-                    <feMergeNode/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-
-                {/* Inner shadow effect */}
-                <filter id="innerShadow">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
-                  <feOffset in="blur" dx="1" dy="2" result="offsetBlur"/>
-                  <feFlood floodColor="#94a3b8" floodOpacity="0.4" result="offsetColor"/>
-                  <feComposite in="offsetColor" in2="offsetBlur" operator="in" result="offsetBlur"/>
-                  <feMerge>
-                    <feMergeNode in="SourceGraphic"/>
-                    <feMergeNode in="offsetBlur"/>
-                  </feMerge>
-                </filter>
-
-                {/* Marker glow */}
-                <filter id="markerGlow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Detailed Turkey outline with provinces */}
-              <g filter="url(#dropShadow)">
-                <path
-                  d="M 80 300
-                     C 120 280, 160 270, 200 275
-                     C 240 280, 280 270, 320 268
-                     C 360 266, 400 264, 440 260
-                     C 480 256, 520 254, 560 256
-                     C 600 258, 640 262, 680 270
-                     C 720 278, 760 290, 800 305
-                     C 840 320, 880 340, 910 365
-                     C 930 380, 945 400, 950 420
-                     C 952 440, 945 460, 935 475
-                     C 920 495, 900 510, 875 520
-                     C 850 530, 820 535, 790 538
-                     C 760 540, 730 540, 700 538
-                     C 670 536, 640 532, 610 528
-                     C 580 524, 550 520, 520 516
-                     C 490 512, 460 508, 430 504
-                     C 400 500, 370 496, 340 492
-                     C 310 488, 280 484, 250 480
-                     C 220 476, 190 472, 160 465
-                     C 130 458, 100 445, 85 425
-                     C 70 405, 65 380, 68 355
-                     C 70 330, 75 315, 80 300 Z"
-                  fill="url(#mapGradient)"
-                  stroke="#cbd5e1"
-                  strokeWidth="4"
-                  filter="url(#innerShadow)"
-                  className="transition-all duration-500"
+              {/* Realistic Turkey Map */}
+              <div className="relative w-full aspect-[2/1] rounded-2xl overflow-hidden">
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Turkey_location_map.svg/2560px-Turkey_location_map.svg.png"
+                  alt="Türkiye Haritası"
+                  fill
+                  className="object-contain"
+                  priority
                 />
 
-                {/* Region dividers for detail */}
-                <path d="M 320 268 Q 340 350 360 420" stroke="#e2e8f0" strokeWidth="1.5" opacity="0.6" fill="none"/>
-                <path d="M 560 256 Q 580 340 600 410" stroke="#e2e8f0" strokeWidth="1.5" opacity="0.6" fill="none"/>
-                <path d="M 200 350 Q 500 340 800 360" stroke="#e2e8f0" strokeWidth="1.5" opacity="0.6" fill="none"/>
-              </g>
+                {/* City markers overlay */}
+                <div className="absolute inset-0">
+                  {citiesWithCount.map((cityData, index) => {
+                    const city = cityData.name;
+                    const isSelected = selectedCity === city;
+                    const isHovered = hoveredCity === city;
 
-              {/* City Markers with 3D effect */}
-              {/* İstanbul */}
-              <g className="cursor-pointer transition-all duration-300" onClick={() => setSelectedCity('İstanbul')}>
-                <circle cx="420" cy="295" r="28" fill={selectedCity === 'İstanbul' ? '#F9A822' : '#1f2937'} opacity="0.2" filter="url(#markerGlow)"/>
-                <circle cx="420" cy="290" r="24" fill={selectedCity === 'İstanbul' ? '#F9A822' : '#1f2937'} className="transition-all duration-300"/>
-                <circle cx="420" cy="290" r="32" fill="none" stroke={selectedCity === 'İstanbul' ? '#F9A822' : '#1f2937'} strokeWidth="2.5" opacity="0.4"/>
-                <circle cx="418" cy="287" r="4" fill="white" opacity="0.7"/>
-                <text x="420" y="250" textAnchor="middle" className="text-base font-bold fill-gray-900 pointer-events-none" style={{textShadow: '0 1px 2px rgba(0,0,0,0.1)'}}>
-                  İstanbul
-                </text>
-                <text x="420" y="268" textAnchor="middle" className="text-xs fill-gray-600 pointer-events-none font-semibold">
-                  2 Mağaza
-                </text>
-              </g>
+                    // Approximate positions for major cities
+                    const cityPositions: Record<string, { top: string; left: string }> = {
+                      'İstanbul': { top: '35%', left: '32%' },
+                      'Ankara': { top: '50%', left: '52%' },
+                      'İzmir': { top: '58%', left: '18%' },
+                      'Antalya': { top: '72%', left: '42%' },
+                      'Bursa': { top: '47%', left: '26%' },
+                      'Adana': { top: '68%', left: '68%' },
+                      'Konya': { top: '60%', left: '57%' },
+                      'Gaziantep': { top: '66%', left: '75%' },
+                      'Eskişehir': { top: '52%', left: '42%' },
+                      'Kayseri': { top: '58%', left: '68%' },
+                      'Mersin': { top: '75%', left: '62%' },
+                      'Trabzon': { top: '28%', left: '88%' },
+                    };
 
-              {/* Ankara */}
-              <g className="cursor-pointer transition-all duration-300" onClick={() => setSelectedCity('Ankara')}>
-                <circle cx="560" cy="335" r="28" fill={selectedCity === 'Ankara' ? '#F9A822' : '#1f2937'} opacity="0.2" filter="url(#markerGlow)"/>
-                <circle cx="560" cy="330" r="24" fill={selectedCity === 'Ankara' ? '#F9A822' : '#1f2937'} className="transition-all duration-300"/>
-                <circle cx="560" cy="330" r="32" fill="none" stroke={selectedCity === 'Ankara' ? '#F9A822' : '#1f2937'} strokeWidth="2.5" opacity="0.4"/>
-                <circle cx="558" cy="327" r="4" fill="white" opacity="0.7"/>
-                <text x="560" y="290" textAnchor="middle" className="text-base font-bold fill-gray-900 pointer-events-none" style={{textShadow: '0 1px 2px rgba(0,0,0,0.1)'}}>
-                  Ankara
-                </text>
-                <text x="560" y="308" textAnchor="middle" className="text-xs fill-gray-600 pointer-events-none font-semibold">
-                  1 Mağaza
-                </text>
-              </g>
+                    const position = cityPositions[city];
+                    if (!position) return null;
 
-              {/* İzmir */}
-              <g className="cursor-pointer transition-all duration-300" onClick={() => setSelectedCity('İzmir')}>
-                <circle cx="260" cy="370" r="28" fill={selectedCity === 'İzmir' ? '#F9A822' : '#1f2937'} opacity="0.2" filter="url(#markerGlow)"/>
-                <circle cx="260" cy="365" r="24" fill={selectedCity === 'İzmir' ? '#F9A822' : '#1f2937'} className="transition-all duration-300"/>
-                <circle cx="260" cy="365" r="32" fill="none" stroke={selectedCity === 'İzmir' ? '#F9A822' : '#1f2937'} strokeWidth="2.5" opacity="0.4"/>
-                <circle cx="258" cy="362" r="4" fill="white" opacity="0.7"/>
-                <text x="260" y="325" textAnchor="middle" className="text-base font-bold fill-gray-900 pointer-events-none" style={{textShadow: '0 1px 2px rgba(0,0,0,0.1)'}}>
-                  İzmir
-                </text>
-                <text x="260" y="343" textAnchor="middle" className="text-xs fill-gray-600 pointer-events-none font-semibold">
-                  1 Mağaza
-                </text>
-              </g>
+                    return (
+                      <div
+                        key={city}
+                        className="absolute cursor-pointer group transition-all duration-300 animate-fadeIn"
+                        style={{
+                          top: position.top,
+                          left: position.left,
+                          transform: 'translate(-50%, -50%)',
+                          animationDelay: `${index * 100}ms`
+                        }}
+                        onClick={() => setSelectedCity(isSelected ? null : city)}
+                        onMouseEnter={() => setHoveredCity(city)}
+                        onMouseLeave={() => setHoveredCity(null)}
+                      >
+                        {/* Pulse effect */}
+                        <div className={`absolute inset-0 rounded-full animate-ping ${isSelected || isHovered ? 'bg-brand-orange' : 'bg-gray-700'} opacity-20`}></div>
 
-              {/* Antalya */}
-              <g className="cursor-pointer transition-all duration-300" onClick={() => setSelectedCity('Antalya')}>
-                <circle cx="480" cy="465" r="28" fill={selectedCity === 'Antalya' ? '#F9A822' : '#1f2937'} opacity="0.2" filter="url(#markerGlow)"/>
-                <circle cx="480" cy="460" r="24" fill={selectedCity === 'Antalya' ? '#F9A822' : '#1f2937'} className="transition-all duration-300"/>
-                <circle cx="480" cy="460" r="32" fill="none" stroke={selectedCity === 'Antalya' ? '#F9A822' : '#1f2937'} strokeWidth="2.5" opacity="0.4"/>
-                <circle cx="478" cy="457" r="4" fill="white" opacity="0.7"/>
-                <text x="480" y="420" textAnchor="middle" className="text-base font-bold fill-gray-900 pointer-events-none" style={{textShadow: '0 1px 2px rgba(0,0,0,0.1)'}}>
-                  Antalya
-                </text>
-                <text x="480" y="438" textAnchor="middle" className="text-xs fill-gray-600 pointer-events-none font-semibold">
-                  1 Mağaza
-                </text>
-              </g>
+                        {/* Main marker */}
+                        <div className={`relative w-12 h-12 rounded-full transition-all duration-300 ${
+                          isSelected || isHovered
+                            ? 'bg-gradient-to-br from-brand-orange to-orange-600 scale-125 shadow-lg shadow-brand-orange/50'
+                            : 'bg-gradient-to-br from-gray-800 to-gray-900 shadow-md hover:scale-110'
+                        }`}>
+                          <div className="absolute inset-0 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                            {cityData.count}
+                          </div>
+                          <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-gray-800"></div>
+                        </div>
 
-              {/* Bursa */}
-              <g className="cursor-pointer transition-all duration-300" onClick={() => setSelectedCity('Bursa')}>
-                <circle cx="340" cy="310" r="28" fill={selectedCity === 'Bursa' ? '#F9A822' : '#1f2937'} opacity="0.2" filter="url(#markerGlow)"/>
-                <circle cx="340" cy="305" r="24" fill={selectedCity === 'Bursa' ? '#F9A822' : '#1f2937'} className="transition-all duration-300"/>
-                <circle cx="340" cy="305" r="32" fill="none" stroke={selectedCity === 'Bursa' ? '#F9A822' : '#1f2937'} strokeWidth="2.5" opacity="0.4"/>
-                <circle cx="338" cy="302" r="4" fill="white" opacity="0.7"/>
-                <text x="340" y="265" textAnchor="middle" className="text-base font-bold fill-gray-900 pointer-events-none" style={{textShadow: '0 1px 2px rgba(0,0,0,0.1)'}}>
-                  Bursa
-                </text>
-                <text x="340" y="283" textAnchor="middle" className="text-xs fill-gray-600 pointer-events-none font-semibold">
-                  1 Mağaza
-                </text>
-              </g>
-            </svg>
+                        {/* City label */}
+                        <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 ${
+                          isSelected || isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+                        }`}>
+                          <div className="bg-white px-3 py-1.5 rounded-lg shadow-lg border border-gray-200">
+                            <p className="font-heading text-sm font-bold text-gray-900">{city}</p>
+                            <p className="text-xs text-gray-600">{cityData.count} Mağaza</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
 
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600 mb-3">
-                Şehirlere tıklayarak mağazaları görüntüleyin
+              <p className="text-center text-sm text-gray-600 mt-6">
+                Haritadaki noktalar tıklanabilir • {selectedCity ? `${selectedCity} mağazaları gösteriliyor` : 'Bir şehir seçin'}
               </p>
-              {selectedCity && (
-                <button
-                  onClick={() => setSelectedCity(null)}
-                  className="text-sm text-brand-orange hover:underline font-medium"
-                >
-                  Tümünü Göster
-                </button>
-              )}
             </div>
           </div>
+        </div>
 
-          {/* Store List */}
-          <div className="space-y-4">
-            {nearestStore && (
-              <div className="bg-gradient-to-br from-brand-orange via-orange-500 to-orange-600 text-white rounded-2xl p-6 mb-6 shadow-2xl border-2 border-orange-400 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                      </svg>
-                    </div>
-                    <h3 className="font-heading text-xl font-bold">Size En Yakın Mağaza</h3>
+        {/* Store List */}
+        <div className="space-y-4">
+          {nearestStore && (
+            <div className="bg-gradient-to-br from-brand-orange via-orange-500 to-orange-600 text-white rounded-2xl p-8 mb-8 shadow-2xl border-2 border-orange-400 relative overflow-hidden animate-fadeIn">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
                   </div>
-                  <h4 className="font-heading text-2xl font-bold mb-3">{nearestStore.name}</h4>
-                  <p className="text-sm mb-3 text-white/95 leading-relaxed">{nearestStore.address}</p>
-                  <div className="flex items-center gap-2 text-sm text-white/95 bg-white/10 rounded-lg px-3 py-2 inline-flex">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div>
+                    <h3 className="font-heading text-2xl font-bold">Size En Yakın Mağaza</h3>
+                    <p className="text-white/80 text-sm">Konumunuza göre önerilen</p>
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                  <h4 className="font-heading text-2xl font-bold mb-2">{nearestStore.name}</h4>
+                  <p className="text-white/90 mb-1">{nearestStore.address}</p>
+                  <p className="text-white/90 mb-3">{nearestStore.district}, {nearestStore.city}</p>
+                  <div className="flex items-center gap-2 text-white/95">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     {nearestStore.phone}
                   </div>
                 </div>
               </div>
-            )}
+            </div>
+          )}
 
-            <h3 className="font-heading text-2xl text-black mb-4">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="font-heading text-3xl text-black">
               {selectedCity ? `${selectedCity} Mağazaları (${cityStores.length})` : `Tüm Mağazalarımız (${stores.length})`}
             </h3>
+            {selectedCity && (
+              <button
+                onClick={() => setSelectedCity(null)}
+                className="px-4 py-2 text-brand-orange border-2 border-brand-orange rounded-lg hover:bg-brand-orange hover:text-white transition-all duration-300 font-heading text-sm tracking-wider uppercase"
+              >
+                Tümünü Göster
+              </button>
+            )}
+          </div>
 
-            <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
-              {cityStores.map((store) => (
-                <div
-                  key={store.id}
-                  className={`bg-white rounded-xl p-6 border-2 shadow-md hover:shadow-xl transition-all duration-300 ${
-                    nearestStore?.id === store.id
-                      ? 'border-brand-orange bg-orange-50'
-                      : 'border-gray-200 hover:border-brand-orange'
-                  }`}
-                >
-                  {nearestStore?.id === store.id && (
-                    <div className="mb-3 flex items-center gap-2">
-                      <div className="px-3 py-1 bg-brand-orange text-white text-xs font-bold rounded-full inline-flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        EN YAKIN
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cityStores.map((store, index) => (
+              <div
+                key={store.id}
+                className={`bg-white rounded-2xl p-6 border-2 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 animate-fadeIn ${
+                  nearestStore?.id === store.id
+                    ? 'border-brand-orange bg-gradient-to-br from-orange-50 to-white'
+                    : 'border-gray-200 hover:border-brand-orange'
+                }`}
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                {nearestStore?.id === store.id && (
+                  <div className="mb-4">
+                    <div className="px-3 py-1.5 bg-gradient-to-r from-brand-orange to-orange-600 text-white text-xs font-bold rounded-full inline-flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      EN YAKIN MAĞAZA
                     </div>
-                  )}
-                  <h4 className="font-heading text-lg font-semibold text-gray-900 mb-2">{store.name}</h4>
-                  <p className="text-sm text-gray-600 mb-3">{store.address}</p>
-                  <div className="flex items-center gap-2 text-sm text-gray-700 mb-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </div>
+                )}
+
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-brand-orange to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-heading text-lg font-bold text-gray-900 mb-1">{store.name}</h4>
+                    <p className="text-sm text-brand-orange font-semibold">{store.district}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                  <p className="flex items-start gap-2">
+                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {store.address}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     {store.phone}
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     10:00 - 20:00
-                  </div>
+                  </p>
                 </div>
-              ))}
-            </div>
+
+                <button className="w-full py-2.5 bg-gray-900 text-white rounded-lg hover:bg-brand-orange transition-all duration-300 font-heading text-sm tracking-wider uppercase">
+                  Haritada Göster
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
